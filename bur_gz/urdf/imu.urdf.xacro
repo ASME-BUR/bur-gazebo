@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="helpers.urdf.xacro"/>
+
+  <gazebo>
+    <plugin filename="gz-sim-imu-system"
+        name="gz::sim::systems::Imu">
+    </plugin>
+  </gazebo>
+
+  <link name="${ns}/imu_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+      <material name="green" />
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+    <origin xyz="0 0 0.06"/>
+    <parent link="${ns}/base_link"/>
+    <child link="${ns}/imu_link"/>
+  </joint>
+
+  <gazebo reference="${ns}/imu_link">
+    <sensor name="imu_sensor" type="imu">
+      <always_on>1</always_on>
+      <update_rate>1</update_rate>
+      <visualize>true</visualize>
+      <topic>imu</topic>
+    </sensor>
+  </gazebo>
+
+</robot>
