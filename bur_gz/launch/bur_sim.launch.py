@@ -124,14 +124,14 @@ def generate_launch_description():
 
     return LaunchDescription([
         # Launch gazebo environment
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                [PathJoinSubstitution([FindPackageShare('ros_gz_sim'),
-                                       'launch',
-                                       'gz_sim.launch.py'])]),
-            launch_arguments=[('gz_args', [' -r -v 4 src/bur_gz/worlds/demo_world.sdf'])]),
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource(
+        #         [PathJoinSubstitution([FindPackageShare('ros_gz_sim'),
+        #                                'launch',
+        #                                'gz_sim.launch.py'])]),
+        #     launch_arguments=[('gz_args', [' -r -v 4 src/bur_gz/worlds/demo_world.sdf'])]),
         node_robot_state_publisher,
-        gz_spawn_entity,
+        # gz_spawn_entity,
 
 
         # Thruster bridges
