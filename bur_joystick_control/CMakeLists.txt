@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.8)
 project(bur_joystick_control)
 
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
@@ -19,8 +23,16 @@ ament_target_dependencies(joystick_converter_node
   bur_msgs
 )
 
+# Second executable - network joystick (no jsoncpp dependency)
+add_executable(network_joystick_node src/network_joystick.cpp)
+ament_target_dependencies(network_joystick_node
+  rclcpp
+  sensor_msgs
+)
+
 install(TARGETS
   joystick_converter_node
+  network_joystick_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
