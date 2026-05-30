@@ -114,12 +114,12 @@ private:
         thruster_pub_->publish(thrust_msg);
         
         // Debug output for significant movements
-        if (fabs(left_stick_y) > 0.2 || fabs(left_stick_x) > 0.2 || 
-            fabs(vertical) > 0.2 || fabs(right_stick_x) > 0.2) {
-            RCLCPP_DEBUG(this->get_logger(), 
-                        "Controls: F/B:%.2f, Turn:%.2f, Vert:%.2f, Strafe:%.2f", 
-                        left_stick_y, left_stick_x, vertical, right_stick_x);
-        }
+        // if (fabs(left_stick_y) > 0.2 || fabs(left_stick_x) > 0.2 || 
+        //     fabs(vertical) > 0.2 || fabs(right_stick_x) > 0.2) {
+        //     RCLCPP_DEBUG(this->get_logger(), 
+        //                 "Controls: F/B:%.2f, Turn:%.2f, Vert:%.2f, Strafe:%.2f", 
+        //                 left_stick_y, left_stick_x, vertical, right_stick_x);
+        // }
     }
 
     float apply_deadzone(float value, float deadzone) {
