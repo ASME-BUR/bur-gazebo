@@ -111,7 +111,7 @@ def generate_launch_description():
     absolute_position_bridge = ExecuteProcess(
         cmd=[
             'ros2', 'run', 'ros_gz_bridge', 'parameter_bridge',
-            '/model/bur/pose@geometry_msgs/msg/Pose@ignition.msgs.Pose'
+            '/model/urdf_model/pose@geometry_msgs/msg/Pose@ignition.msgs.Pose'
         ],
         output='screen'
     )
@@ -124,14 +124,14 @@ def generate_launch_description():
 
     return LaunchDescription([
         # Launch gazebo environment
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                [PathJoinSubstitution([FindPackageShare('ros_gz_sim'),
-                                       'launch',
-                                       'gz_sim.launch.py'])]),
-            launch_arguments=[('gz_args', [' -r -v 4 src/bur_gz/worlds/demo_world.sdf'])]),
-        node_robot_state_publisher,
-        gz_spawn_entity,
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource(
+        #         [PathJoinSubstitution([FindPackageShare('ros_gz_sim'),
+        #                                'launch',
+        #                                'gz_sim.launch.py'])]),
+        #     launch_arguments=[('gz_args', [' -r -v 4 src/bur_gz/worlds/demo_world.sdf'])]),
+        # node_robot_state_publisher,
+        # gz_spawn_entity,
 
 
         # Thruster bridges

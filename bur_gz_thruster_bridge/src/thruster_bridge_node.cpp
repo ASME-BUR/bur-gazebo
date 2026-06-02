@@ -24,7 +24,7 @@ class ThrusterBridge : public rclcpp::Node
         std::bind(&ThrusterBridge::thruster_callback, this, std::placeholders::_1));
 
         for (int i = 0; i < 8; i++) {
-            std::string topic_name = "model/bur/joint/thruster_" + std::to_string(i+1) + "/cmd_pos";
+            std::string topic_name = "model/bur/joint/thruster" + std::to_string(i+1) + "/cmd_pos";
             auto publisher = this->create_publisher<std_msgs::msg::Float64>(topic_name, 10);
             publishers_.push_back(publisher);
         }
